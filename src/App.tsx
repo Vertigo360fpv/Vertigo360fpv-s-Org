@@ -1,15 +1,42 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
+import jsPDF from 'jspdf';
+import domtoimage from 'dom-to-image';
 import { ProposalDocument } from './components/ProposalDocument';
 import { Download, FileText, Settings, Target } from 'lucide-react';
 
 export default function App() {
   const documentRef = useRef<HTMLDivElement>(null);
 
-  const handlePrint = () => {
-    const originalTitle = document.title;
-    document.title = 'Propuesta_Comercial_Vertigo_360';
-    window.print();
-    document.title = originalTitle;
+  const handlePrint = async () => {
+    if (!documentRef.current) return;
+    
+    try {
+      const dataUrl = await domtoimage.toPng(documentRef.current, {
+        quality: 1.0,
+        bgcolor: '#ffffff'
+      });
+      
+      const img = new Image();
+      img.src = dataUrl;
+      await new Promise((resolve) => {
+        img.onload = resolve;
+      });
+      
+      // A4 dimensions in mm: 210 x 297
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4'
+      });
+      
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (img.height * pdfWidth) / img.width;
+      
+      pdf.addImage(dataUrl, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save('Propuesta_Comercial_Vertigo_360.pdf');
+    } catch (error) {
+      console.error("Error generating PDF", error);
+    }
   };
 
   return (
@@ -43,14 +70,14 @@ export default function App() {
         <div className="mt-8 pt-6 border-t border-gray-200">
           <button
             onClick={handlePrint}
-            className="w-full flex items-center justify-center space-x-2 bg-gray-900 hover:bg-gray-800 text-white py-3 px-4 rounded-lg transition-colors font-medium shadow-sm active:scale-[0.98]"
+            className="w-full flex items-center justify-center space-x-2 bg-slate-900 hover:bg-slate-800 text-white py-3 px-4 rounded-sm transition-colors font-bold tracking-widest uppercase shadow-sm active:scale-[0.98] text-[10px]"
           >
-            <Download className="w-5 h-5" />
+            <Download className="w-4 h-4" />
             <span>Descargar PDF</span>
           </button>
           
-          <p className="text-xs text-center text-gray-500 mt-4 leading-relaxed">
-            * Para generar el PDF, haz clic en Descargar y selecciona "Guardar como PDF" en el destino de impresión.
+          <p className="text-[10px] text-center text-slate-500 mt-4 leading-relaxed uppercase font-bold tracking-tight">
+            * El archivo PDF se descargará automáticamente a tu equipo.
           </p>
         </div>
       </aside>
