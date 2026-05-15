@@ -58,7 +58,7 @@ export default function App() {
               DETALLES DEL DOCUMENTO
             </h2>
             <ul className="text-sm space-y-2 text-gray-600">
-              <li><span className="font-medium text-gray-900">Cliente:</span> Steven Muñoz</li>
+              <li><span className="font-medium text-gray-900">Cliente:</span> Infomateriales del valle</li>
               <li><span className="font-medium text-gray-900">Tipo:</span> Propuesta Comercial</li>
               <li><span className="font-medium text-gray-900">Alcance:</span> 2 Bodegas (FPV RRSS)</li>
               <li><span className="font-medium text-gray-900">Presupuesto:</span> COP $4M</li>

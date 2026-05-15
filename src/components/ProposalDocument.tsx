@@ -34,7 +34,7 @@ export const ProposalDocument = React.forwardRef<HTMLDivElement>((props, ref) =>
               <h2 className="text-xs font-bold uppercase tracking-widest text-slate-500">Presentación</h2>
             </div>
             <p className="text-[11px] leading-relaxed mb-4 font-medium text-slate-700 text-justify">
-              <strong>Para: Steven Muñoz</strong><br/>
+              <strong>Para: Infomateriales del valle</strong><br/>
               Es un placer saludarle. En <span className="font-bold">Vértigo 360</span>, somos 
               especialistas en capturar la magnitud y capacidad logística de infraestructuras comerciales a través 
               de perspectivas únicas.
@@ -135,16 +135,19 @@ export const ProposalDocument = React.forwardRef<HTMLDivElement>((props, ref) =>
             <table className="w-full text-left text-[10px] border-collapse">
               <tbody className="bg-white">
                 <tr>
-                  <td className="p-2 border border-slate-200 text-slate-700">Producción audiovisual - Bodega Comercial 1</td>
-                  <td className="p-2 border border-slate-200 text-right font-mono font-medium text-slate-900">COP $2.000.000</td>
+                  <td className="p-2 border border-slate-200 text-slate-700">Producción audiovisual - Bodega Comercial 1 (Oferta Mayo)</td>
+                  <td className="p-2 border border-slate-200 text-right font-mono font-medium text-slate-900">COP $1.250.000</td>
                 </tr>
                 <tr>
-                  <td className="p-2 border border-slate-200 text-slate-700">Producción audiovisual - Bodega Comercial 2</td>
-                  <td className="p-2 border border-slate-200 text-right font-mono font-medium text-slate-900">COP $2.000.000</td>
+                  <td className="p-2 border border-slate-200 text-slate-700">Producción audiovisual - Bodega Comercial 2 (Oferta Mayo)</td>
+                  <td className="p-2 border border-slate-200 text-right font-mono font-medium text-slate-900">COP $1.250.000</td>
                 </tr>
                 <tr className="bg-slate-900 text-white">
-                  <td className="p-3 border border-slate-900 font-bold tracking-widest uppercase text-[10px]">Valor Total Inversión</td>
-                  <td className="p-3 border border-slate-900 text-right font-bold text-sm font-mono text-amber-400">COP $4.000.000</td>
+                  <td className="p-3 border border-slate-900 flex flex-col justify-center">
+                    <span className="font-bold tracking-widest uppercase text-[10px]">Valor Total Inversión</span>
+                    <span className="text-[8px] text-amber-500 uppercase tracking-widest mt-1">* Condición: Realizar la producción de los 2 proyectos</span>
+                  </td>
+                  <td className="p-3 border border-slate-900 text-right font-bold text-sm font-mono text-amber-400 align-middle">COP $2.500.000</td>
                 </tr>
               </tbody>
             </table>
@@ -173,8 +176,10 @@ export const ProposalDocument = React.forwardRef<HTMLDivElement>((props, ref) =>
 
       {/* Footer / Signatures */}
       <footer className="px-8 py-6 bg-white border-t-2 border-slate-200 flex items-center justify-between shrink-0">
-        <div className="flex gap-4 text-[9px] text-slate-400 font-bold uppercase tracking-tighter">
-          <span>Vértigo 360</span>
+        <div className="flex flex-col text-slate-500">
+          <span className="font-bold uppercase tracking-widest text-[9px] text-amber-600 mb-1">Contacto Vértigo 360</span>
+          <span className="font-bold text-[11px] text-slate-800">Felipe Agudelo</span>
+          <span className="text-[10px] text-slate-600">Cel / WhatsApp: 311 516 9900</span>
         </div>
         <div className="flex items-end gap-12">
           <div className="text-center">
